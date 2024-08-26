@@ -1,0 +1,54 @@
+.custom-select {
+	position: relative;
+	max-width: 370px;
+	width: 100%;
+	background-color: #f4f4f4;
+
+	&__control {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 19px 15px;
+		cursor: pointer;
+	}
+
+	&__arrow {
+		margin-left: 10px;
+		background-image: url('/public/arrow.svg');
+		width: 14px;
+		height: 7px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	&__arrow-up {
+		transform: rotateX(180deg);
+	}
+
+	&__options {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: #fff;
+		z-index: 1000;
+	}
+
+	&__option {
+		display: flex;
+		padding: 19px 15px;
+		cursor: pointer;
+		max-width: 370px;
+		background-color: #f4f4f4;
+		border-bottom: 1px solid #dedede;
+
+		&:hover {
+			background-color: #f0f0f0;
+		}
+	}
+
+	&__option:first-child {
+		border-top: 1px solid #dedede;
+	}
+}
