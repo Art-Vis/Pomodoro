@@ -1,14 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, FC } from 'react';
 import './CustomSelect.scss'; // Подключение стилей
+import { CustomSelectProps, Option } from '../../../types/interface';
 
-const CustomSelect = ({ options, value, onChange }) => {
+const CustomSelect: FC<CustomSelectProps> = ({ options, value, onChange }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedValue, setSelectedValue] = useState(value);
-	const selectRef = useRef(null);
+	const selectRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const handleClickOutside = event => {
-			if (selectRef.current && !selectRef.current.contains(event.target)) {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				selectRef.current &&
+				!selectRef.current.contains(event.target as Node)
+			) {
 				setIsOpen(false);
 			}
 		};
@@ -19,9 +23,9 @@ const CustomSelect = ({ options, value, onChange }) => {
 		};
 	}, []);
 
-	const handleOptionClick = option => {
-		setSelectedValue(option);
-		onChange(option);
+	const handleOptionClick = (option: Option) => {
+		setSelectedValue(option.value);
+		onChange(option.value);
 		setIsOpen(false);
 	};
 
@@ -49,7 +53,7 @@ const CustomSelect = ({ options, value, onChange }) => {
 							className='custom-select__option'
 							onClick={() => handleOptionClick(option)}
 						>
-							{option}
+							{option.label}
 						</div>
 					))}
 				</div>

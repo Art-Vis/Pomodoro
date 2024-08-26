@@ -1,4 +1,5 @@
 import { Bar } from 'react-chartjs-2';
+import { ChartOptions } from 'chart.js';
 import {
 	Chart as ChartJS,
 	CategoryScale,
@@ -51,7 +52,7 @@ const BarChart: FC<DataTasksProps> = ({ dataTasksArr }) => {
 		'2 ч 30 мин',
 	];
 
-	const options = {
+	const options: ChartOptions<'bar'> = {
 		responsive: true,
 		plugins: {},
 		scales: {

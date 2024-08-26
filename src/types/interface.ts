@@ -27,3 +27,14 @@ export interface TimerProps {
 export interface DataTasksProps {
 	dataTasksArr: TaskInterface[];
 }
+
+export interface Option {
+	label: string;
+	value: string | number;
+}
+
+export interface CustomSelectProps {
+	options: Option[];
+	value: string | number;
+	onChange: (value: string | number) => void;
+}

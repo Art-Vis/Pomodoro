@@ -2,12 +2,21 @@ import { FC, useState } from 'react';
 import BarChart from './BarChart/BarChart';
 import './StatisticsPage.scss';
 import CustomSelect from './CustomSelect/CustomSelect';
-import { DataTasksProps } from '../../types/interface';
+import { DataTasksProps, Option } from '../../types/interface';
 import { useFormateTime } from '../../hooks/useFormateTime';
 
 const StatisticsPage: FC<DataTasksProps> = ({ dataTasksArr }) => {
-	const [selectedOption, setSelectedOption] = useState('Эта неделя');
-	const options = ['Эта неделя', 'Прошедшая неделя', '2 недели назад'];
+	const [selectedOption, setSelectedOption] = useState<string | number>(
+		'Эта неделя'
+	);
+	const options: Option[] = [
+		'Эта неделя',
+		'Прошедшая неделя',
+		'2 недели назад',
+	].map(label => ({
+		label,
+		value: label,
+	}));
 
 	const totalPomodoros = dataTasksArr.reduce((acc, task) => {
 		return acc + task.pomodoros;

@@ -18,9 +18,9 @@ const MainPage = ({
 		return savedTasksArr ? JSON.parse(savedTasksArr) : [];
 	});
 	const [taskTime, setTaskTime] = useState(0);
-	const [taskNumber, setTaskNumber] = useState(1);
+	const [taskNumber] = useState(1);
 	const [taskName, setTaskName] = useState('');
-	const [name, setName] = useState('');
+	const [name] = useState('');
 	const [currentTask, setCurrentTask] = useState<TaskInterface | null>(null);
 
 	useEffect(() => {
